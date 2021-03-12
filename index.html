@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<title>Product App</title>
+</head>
+<body>
+
+    <div id="app">
+    <header class="header">
+        <nav class="navbar">
+            <ul class="navbar-items">
+                <li class="nav-item logo">
+                     Logo 
+                </li>
+                <li class="nav-item">
+                    <a href="#"> Home </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#"> Products </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#"> Contacts </a>
+                </li>
+                <li class="nav-search">
+                    <label class="nav-search__item" for="search">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0)">
+                            <path d="M34.5979 29.67C40.5999 21.1947 38.5926 9.45891 30.1173 3.45838C21.642 -2.54214 9.90617 -0.536234 3.90565 7.9405C-2.09488 16.4158 -0.0889681 28.1502 8.38776 34.1507C14.437 38.4335 22.4349 38.7633 28.8154 34.9952L42.6789 48.7756C44.1758 50.3514 46.6664 50.4145 48.2422 48.9176C49.8179 47.4221 49.881 44.9316 48.3855 43.3558C48.3382 43.3056 48.2923 43.2597 48.2422 43.2124L34.5979 29.67ZM19.2403 30.9547C12.543 30.9561 7.1131 25.5306 7.1088 18.8332C7.10736 12.1358 12.5329 6.70598 19.2317 6.70311C25.9205 6.70024 31.3475 12.1172 31.3604 18.806C31.3719 25.5048 25.9492 30.9432 19.2489 30.9547C19.2461 30.9547 19.2446 30.9547 19.2403 30.9547Z" fill="white"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0">
+                            <rect width="50" height="50" fill="white"/>
+                            </clipPath>
+                            </defs>
+                        </svg>
+                        <input 
+                            :value="inputValue" 
+                            @input="inputSearch" 
+                            id="search" 
+                            type="search" 
+                            placeholder="Search" > 
+                    </label>
+                    
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="wrapper">
+                
+                <section class="section">
+                    <h1>Shop</h1>
+
+                    <div class="grid-container">
+
+                        <div class="search-container">
+
+                            <button @click="clickSth()">Click</button>
+
+                            <div class="categorys-container">
+                                <div class="category-items">
+                                    <div class="category-group">
+                                        <label for="shoes">Shoes</label>
+                                        <input v-model="shoes" id="shoes" type="checkbox">
+                                    </div>
+                                    <div class="category-group">
+                                        <label for="tshorts">T-shorts</label>
+                                        <input v-model="tshort" id="tshorts" type="checkbox">
+                                    </div>
+                                    <div class="category-group">
+                                        <label for="pants">Pants</label>
+                                        <input v-model="pants" id="pants" type="checkbox">
+                                    </div>
+                                    <div class="category-group">
+                                        <label for="hoodie">Hoodie</label>
+                                        <input v-model="hoodie" id="hoodie" type="checkbox">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gender">
+                                <h3>Gender</h3>
+                                <select class="chose-gender" @change="filteredByGender" v-model="selected" id="searchByGender">
+                                    <option value="All" selected>All</option>
+                                    <option value="Man" >Man</option>
+                                    <option value="Woman" >Woman</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="products-container">
+
+                            <div  v-for="(item, index) in filterProducts" class="product-item show">
+                                <div class="image-container">
+                                    <img :src="item.image" alt="">
+                                </div>
+                                <div class="about-product">
+                                    <h3>{{item.name}}</h3>
+                                    <p>{{item.description}}</p>
+                                    <button class="btn buy">Buy</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+            
+        </div>
+    </main>
+
+</div>
+    
+    <script src="./app.js"></script>
+</body>
+</html>
